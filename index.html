@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Parisienne&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F5F1;
+    --panel:#141414;
+    --ink:#1A1A1A;
+    --muted:#8A8378;
+    --gold:#B89B72;
+    --line:#E4E0D8;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 40px; }
+  h1,h2,h3{ font-family:'Playfair Display', serif; font-weight:600; letter-spacing:-0.01em; }
+  .script{ font-family:'Parisienne', cursive; font-weight:400; }
 
+  /* NAV */
+  nav{
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:0 40px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{ font-family:'Playfair Display'; font-weight:700; font-size:1.15rem; letter-spacing:0.02em; }
+  .nav-links{ display:flex; gap:36px; font-size:0.9rem; color:var(--muted); }
+  .nav-links a:hover{ color:var(--ink); }
+  @media (max-width:720px){ .nav-links{ display:none; } }
+
+  /* HERO PANEL — dark, split */
+  .hero{
+    background:var(--panel);
+    color:#F2EFE9;
+  }
+  .hero-inner{
+    max-width:1100px; margin:0 auto; padding:100px 40px;
+    display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center;
+  }
+  @media (max-width:800px){ .hero-inner{ grid-template-columns:1fr; padding:70px 28px; } }
+  .hero-eyebrow{ font-family:'Parisienne'; font-size:1.9rem; color:var(--gold); margin-bottom:6px; }
+  .hero h1{ font-size:clamp(2rem,4.2vw,3.1rem); line-height:1.15; text-transform:uppercase; margin-bottom:22px; letter-spacing:0.01em; }
+  .hero-name{ font-size:1.05rem; font-weight:600; margin-bottom:6px; }
+  .hero-role{ color:#B7B2A8; font-size:0.95rem; max-width:380px; margin-bottom:32px; }
+  .btn{
+    display:inline-block;
+    border:1px solid #F2EFE9;
+    color:#F2EFE9;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:13px 26px;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .btn:hover{ background:#F2EFE9; color:var(--panel); }
+  .photo-box{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg,#2A2A2A,#0E0E0E);
+    border:1px solid #333;
+    display:flex; align-items:center; justify-content:center;
+    color:#6B655C;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    text-align:center;
+    padding:20px;
+  }
+
+  section{ padding:110px 0; }
+
+  /* ABOUT — split */
+  .about-inner{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;
+  }
+  @media (max-width:800px){ .about-inner{ grid-template-columns:1fr; gap:40px; } }
+  .about-photo{
+    aspect-ratio:3/4;
+    background:linear-gradient(160deg,#EDE9E1,#DED8CC);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:0.85rem; text-align:center; padding:20px;
+  }
+  .about-label{ font-family:'Parisienne'; font-size:1.6rem; color:var(--gold); }
+  .about-text h2{ font-size:2.1rem; margin:6px 0 26px; }
+  .about-text p{ color:#4A473F; margin-bottom:16px; max-width:480px; }
+  .divider{ width:56px; height:1px; background:var(--gold); margin:26px 0; }
+
+  /* SERVICES */
+  .services{ background:#F1EDE5; }
+  .section-head{ text-align:center; margin-bottom:60px; }
+  .section-head .about-label{ display:block; margin-bottom:8px; }
+  .section-head h2{ font-size:2.2rem; }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+  @media (max-width:800px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    padding:38px 32px;
+    text-align:center;
+  }
+  .service-num{ font-family:'Playfair Display'; font-style:italic; color:var(--gold); font-size:1rem; margin-bottom:14px; }
+  .service-card h3{ font-size:1.25rem; margin-bottom:12px; }
+  .service-card p{ color:var(--muted); font-size:0.92rem; }
+
+  /* WORK */
+  .work-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; }
+  @media (max-width:800px){ .work-grid{ grid-template-columns:1fr; } }
+  .work-card{ border:1px solid var(--line); background:var(--cream); }
+  .work-thumb{
+    aspect-ratio:16/10;
+    background:linear-gradient(160deg,#EDE9E1,#DED8CC);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:0.85rem; border-bottom:1px solid var(--line);
+  }
+  .work-body{ padding:26px 28px; }
+  .work-tag{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:inline-block; }
+  .work-body h3{ font-size:1.25rem; margin-bottom:10px; }
+  .work-body p{ color:#4A473F; font-size:0.94rem; }
+
+  /* CONTACT */
+  .contact{ background:var(--panel); color:#F2EFE9; text-align:center; }
+  .contact .about-label{ color:var(--gold); }
+  .contact h2{ font-size:2.2rem; margin:6px 0 20px; }
+  .contact p{ color:#B7B2A8; max-width:440px; margin:0 auto 32px; }
+
+  footer{ text-align:center; padding:28px 0; color:var(--muted); font-size:0.82rem; background:var(--panel); border-top:1px solid #2A2A2A; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Myce Justinne </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Creative</div>
+      <h1>Freelance Video Editor and Graphic Designer</h1>
+      <div class="hero-name">Myce Justinne Guradillo</div>
+      <p class="hero-role">Helping brands tell their stories through powerful motion and clean design.</p>
+      <a href="#contact" class="btn">Work with me</a>
+    </div>
+  <img src="picture.JPG" alt="Your Name" class="photo-box" style="width:100%; height:100%; object-fit:cover; display:block;">
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <div class="about-inner">
+   <img src="1.jpg" alt="Your Name" class="photo-box" style="width:100%; height:100%; object-fit:cover; display:block;">
+
+    <div class="about-text">
+      <div class="about-label">About</div>
+      <h2>Me</h2>
+      <!-- <p>Placeholder bio. Say what you do, who you work with, and where you're based — real and specific beats polished and vague.</p>-->
+      <p>I’m a video editor and graphic designer based in Carcar City,Philippines crafting high-energy social media content and clean brand visuals for creators and local businesses.
+
+I'm just starting out taking on freelance work. What I bring is a sharp eye for pacing, seamless audio syncing, and a quick turnaround time that keeps your content calendar moving. I've built over a dozen concept projects to sharpen my craft, and I'm looking for my first few real clients.</p>
+      <div class="divider"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="about-label">My</span>
+      <h2>Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Video Editing Focus</h3>
+        <p style="text-align: justify;">What it includes: Clean cuts, engaging pacing, color correction, basic sound design, and burnt-in captions or text overlays optimized for TikTok, Reels, or YouTube.
+
+Who it's for: Busy creators, educators, or business owners who have the raw footage but lack the time or technical skills to turn it into an engaging story.
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>Graphic Design Focus</h3>
+        <p  style="text-align: justify;">What it includes: Custom social media graphics, high-click thumbnails, modern marketing flyers, and clean vector assets tailored to your brand identity.
+
+Who it's for: Brands looking to level up their visual presence, establish a consistent aesthetic, and grab their audience's attention instantly.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>The Full Content Package</h3>
+        <p  style="text-align: justify;">What it includes: End-to-end video production (editing + sound) paired with matching promotional graphics and thumbnails.
+
+Who it’s for: Clients who want a single, reliable creative to handle all their visual content needs in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="section-head">
+    <span class="about-label">Selected</span>
+    <h2>Work</h2>
+  </div>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="work-thumb">[ project image ]</div>
+      <div class="work-body">
+        <span class="work-tag">Concept project</span>
+        <h3>Project Title One</h3>
+        <p>A short line on the problem, your role, and the result.</p>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-thumb">[ project image ]</div>
+      <div class="work-body">
+        <span class="work-tag">Concept project</span>
+        <h3>Project Title Two</h3>
+        <p>A short line on the problem, your role, and the result.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="about-label">Get in</span>
+    <h2>Touch</h2>
+    <p>Tell me about your project — I reply within 24 hours.</p>
+    <a href="mailto:GuradilloMyceJustinne23@gmail.com" class="btn">GuradilloMyceJustinne23@gmail.com</a>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Myce Justinne</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
